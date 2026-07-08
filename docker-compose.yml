@@ -1,0 +1,6 @@
+services:
+  front-messias:
+    build: .
+    container_name: front-messias
+    ports:
+      - "80:80"

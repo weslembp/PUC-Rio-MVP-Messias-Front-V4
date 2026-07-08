@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#ececec] text-gray-800 font-sans antialiased;
+    background-color: #ececec;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/40 shadow-glass rounded-2xl;
+  }
+  
+  .glass-input {
+    @apply bg-white/50 border border-gray-300/50 backdrop-blur-sm rounded-lg focus:ring-2 focus:ring-messias-red/30 focus:border-messias-red transition-all duration-300 outline-none;
+  }
+
+  .nav-pill {
+    @apply px-4 py-2 font-bold text-messias-red rounded-lg transition-all duration-300 ease-out bg-transparent;
+  }
+  
+  .nav-pill.active {
+    @apply bg-messias-red text-white shadow-md transform scale-[1.02];
+  }
+
+  .nav-pill:hover:not(.active) {
+    @apply bg-red-50 text-messias-hover;
+  }
+}
+
+@layer components {
+  .feedback-message {
+    @apply p-4 rounded-xl font-medium mb-4 flex items-center gap-3 transition-all duration-300;
+    animation: slideInFromTop 0.3s ease-out forwards;
+  }
+  
+  .feedback-success {
+    @apply bg-emerald-50 text-emerald-800 border border-emerald-100;
+  }
+  
+  .feedback-error {
+    @apply bg-red-50 text-red-800 border border-red-100;
+  }
+  
+  .feedback-info {
+    @apply bg-blue-50 text-blue-800 border border-blue-100;
+  }
+
+  .tooltip-container {
+    @apply relative inline-block;
+  }
+
+  .tooltip-text {
+    @apply absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 text-xs text-white bg-messias-dark/95 backdrop-blur-sm rounded-lg shadow-lg whitespace-nowrap z-50 pointer-events-none;
+    animation: tooltipShow 0.2s ease-out forwards;
+  }
+  
+  .tooltip-text::after {
+    content: "";
+    @apply absolute top-full left-1/2 transform -translate-x-1/2 border-[6px] border-transparent border-t-messias-dark/95;
+  }
+}
+
+@keyframes slideInFromTop {
+  0% { transform: translateY(-8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes tooltipShow {
+  0% { transform: translate(-50%, 4px) scale(0.95); opacity: 0; }
+  100% { transform: translate(-50%, 0) scale(1); opacity: 1; }
+}
+
+.page-entrance {
+  animation: pageEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageEntrance {
+  0% { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
